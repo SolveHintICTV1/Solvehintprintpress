@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solve Hint - Printing limited Platform</title>
+</head>
+
+<body>
+    <style>
+        body {
+            background-color: white;
+        }
+        
+        .Main-display-12,
+        .Phone-display-12 {
+            display: none;
+        }
+        /* Above 800px: show desktop version */
+        
+        @media only screen and (max-width: 980px) {
+            @supports (-webkit-touch-callout: none) {
+                /*---- only matches for IOS safari---*/
+                .Phone-display-12 {
+                    display: block;
+                    aspect-ratio: 9/16;
+                    /*---- Phone portrait ---*/
+                }
+                .Main-display-12 {
+                    display: none;
+                }
+            }
+        }
+        
+        @media (min-width: 801px) {
+            .Main-display-12 {
+                display: block;
+            }
+        }
+        /* 800px and below: show mobile version */
+        
+        @media (max-width: 800px) {
+            .Phone-display-12 {
+                display: block;
+            }
+        }
+        
+        .div-12 {
+            width: 170px;
+            height: 47px;
+            background-color: transparent;
+            position: relative;
+            font-family: Cambria, "Times New Roman", serif;
+            font-size: 17px;
+            color: black;
+            font-weight: 540;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .div-2828-02 {
+            width: 630px;
+            height: 340px;
+            background-color: white;
+            position: absolute;
+            top: 85px;
+            display: none;
+            left: 300px;
+            transition: opacity 0.5s ease 0.2s, display 0.2s allow-discrete 0.2s;
+            border-top: 1px solid rgb(223, 223, 223);
+        }
+        
+        @starting-style {
+            .div-2828-02-14 {
+                opacity: 0;
+            }
+            .div-2828-02 {
+                opacity: 0;
+            }
+        }
+        
+        .div-2828-02-14 {
+            width: 85%;
+            height: 420px;
+            background-color: white;
+            position: absolute;
+            top: 85px;
+            display: none;
+            left: 130px;
+            transition: opacity 0.5s ease 0.2s, display 0.2s allow-discrete 0.2s;
+            border-top: 1px solid rgb(223, 223, 223);
+        }
+        
+        .div-prt-1,
+        .div-prt-2,
+        .div-prt-3 {
+            width: 33.3%;
+            height: 100%;
+            background-color: transparent;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        
+        .div-prt-2 {
+            background-color: transparent;
+            left: 33.3%;
+        }
+        
+        .div-prt-3 {
+            width: 33.4%;
+            background-color: orange;
+            left: 66.6%;
+        }
+        
+        .div-12:hover {
+            cursor: pointer;
+            color: orange;
+        }
+        
+        .div-2828-02-122,
+        .div-2828-02-122-3 {
+            width: 48%;
+            height: 92%;
+            background-color: transparent;
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            left: 155px;
+            border-right: 1px solid rgb(223, 223, 223);
+        }
+        
+        .div-2828-02-122-3 {
+            border-right: none;
+            top: 50%;
+            left: 470px;
+        }
+        
+        .div-232-828 {
+            width: 83%;
+            height: 140px;
+            background-color: transparent;
+            position: absolute;
+            top: 85px;
+            transform: translate(-50%, -50%);
+            left: 50%;
+            border-radius: 15px;
+            background-image: url('../Media/man-deeply-focused-reading-quiet-library-setting-concept-quiet-library-studious-man-focused-reading_918839-32676.avif');
+            background-size: cover;
+        }
+        
+        .div-232-828-92 {
+            width: 90%;
+            height: 210px;
+            background-color: transparent;
+            position: absolute;
+            top: 134px;
+            transform: translate(-50%, -50%);
+            left: 50%;
+            border-radius: 15px;
+            background-image: url('../Media/man-deeply-focused-reading-quiet-library-setting-concept-quiet-library-studious-man-focused-reading_918839-32676.avif');
+            background-size: cover;
+        }
+        
+        .par-829-22 {
+            font-size: 21px;
+            color: rgb(31, 31, 31);
+            position: absolute;
+            top: 155px;
+            left: 33px;
+            text-decoration: underline;
+            font-weight: normal;
+            font-family: "Cabri ", sans-serif;
+        }
+        
+        .par-829-22-3 {
+            font-size: 11.4px;
+            color: rgb(46, 46, 46);
+            position: absolute;
+            top: 212px;
+            left: 33px;
+            font-weight: normal;
+            font-family: "Cabri ", sans-serif;
+        }
+        
+        .div-2727-227 {
+            width: 130px;
+            font-size: 13px;
+            height: 40px;
+            background-color: transparent;
+            font-family: "Cabri ", sans-serif;
+            position: relative;
+        }
+        
+        .par-828-92 {
+            font-size: 13px;
+            color: rgb(46, 46, 46);
+            position: absolute;
+            top: -1px;
+            left: 12px;
+            font-weight: normal;
+            font-family: "Cabri ", sans-serif;
+        }
+        
+        .nav-8720-82 {
+            position: absolute;
+            top: 5px;
+            left: -15px;
+        }
+        
+        .nav-8720-82 li {
+            padding-bottom: 10px;
+            list-style: none;
+        }
+        
+        .div-010 {
+            width: 100%;
+            height: 100px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: transparent;
+            border-bottom: none;
+        }
+        
+        .div-0101 {
+            width: 100%;
+            height: 80px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 20;
+            background-color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .div-9292-299 {
+            width: 100%;
+            height: 580px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: blue;
+        }
+        
+        .div-9393-88 {
+            width: 40px;
+            height: 40px;
+            background-color: red;
+            position: absolute;
+            top: 50%;
+            right: -7px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: translate(-50%, -50%);
+        }
+        
+        .img-882-29 {
+            zoom: 35%;
+            position: relative;
+        }
+        
+        .div-012,
+        .div-013,
+        .div-014,
+        .div-015,
+        .div-016,
+        .div-017,
+        .div-018,
+        .div-019,
+        .div-020,
+        .div-021 {
+            width: 100%;
+            height: 840px;
+            position: absolute;
+            top: 79px;
+            left: 0;
+            display: block;
+            background-color: red;
+            border-bottom: 1px solid black;
+        }
+        
+        .div-012 {
+            background-image: url('../Media/man-deeply-focused-reading-quiet-library-setting-concept-quiet-library-studious-man-focused-reading_918839-32676.avif');
+            background-size: cover;
+        }
+        
+        .div-013 {
+            height: 450px;
+            top: 919px;
+            background-color: blue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .par-828-882 {
+            font-size: 15px;
+            color: black;
+            position: relative;
+            font-weight: bold;
+            font-family: "Cabri ", sans-serif;
+        }
+        
+        .sp-929-228 {
+            position: relative;
+            top: -4px;
+            left: 5px;
+        }
+        
+        .img-282-911 {
+            zoom: 20%;
+            position: relative;
+        }
+        
+        .div-014 {
+            height: 80px;
+            top: 1369px;
+            background-color: pink;
+        }
+        
+        .div-015 {
+            height: 890px;
+            top: 1449px;
+            background-color: green;
+        }
+        
+        .div-016 {
+            height: 590px;
+            top: 2339px;
+            background-color: blue;
+        }
+        
+        .div-017 {
+            height: 470px;
+            top: 2929px;
+            background-color: green;
+        }
+        
+        .div-018 {
+            height: 670px;
+            top: 3399px;
+            background-color: blue;
+        }
+        
+        .div-019 {
+            height: 250px;
+            top: 4069px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: green;
+        }
+        
+        .div-09292-818 {
+            width: 81%;
+            height: 230px;
+            position: relative;
+            background-color: red;
+        }
+        
+        .div-020 {
+            height: 250px;
+            top: 4319px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: blue;
+        }
+        
+        .div-021 {
+            height: 440px;
+            top: 4569px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: green;
+        }
+        
+        .div-015-822 {
+            width: 390px;
+            height: 360px;
+            position: relative;
+            top: 190px;
+            left: 110px;
+            background-color: red;
+        }
+        
+        .par-8220-911 {
+            font-size: 25px;
+            color: black;
+            top: -160px;
+            position: relative;
+            font-weight: normal;
+            text-align: center;
+            font-family: "Cabri ", sans-serif;
+        }
+        
+        .nav-1828-1 {
+            position: absolute;
+            top: 60px;
+            left: 490px;
+        }
+        
+        .nav-1828-211 {
+            position: absolute;
+            top: 10px;
+            left: -20px;
+        }
+        
+        .nav-1828-2 {
+            position: absolute;
+            top: 80px;
+            left: 2%;
+        }
+        
+        .nav-1828-3 {
+            position: absolute;
+            top: 140px;
+            left: 4%;
+        }
+        
+        .nav-1828-4 {
+            position: absolute;
+            top: 120px;
+            width: 85%;
+            left: 7%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .nav-1828-5 {
+            position: absolute;
+            bottom: 30px;
+            left: 40%;
+        }
+        
+        .nav-1828-4 ul {
+            display: flex;
+            flex-wrap: nowrap;
+        }
+        
+        .div-8282-029 {
+            width: 9px;
+            height: 9px;
+            position: relative;
+            background-color: pink;
+        }
+        
+        .nav-1828-4::-webkit-scrollbar {
+            display: block;
+            /* Chrome, Safari, and Opera */
+            height: 6px;
+            background-color: green;
+            /* Chrome, Safari, and Opera */
+        }
+        
+        .nav-1828-1 li {
+            list-style: none;
+            padding-left: 15px;
+            padding-bottom: 18px;
+            display: inline-block;
+        }
+        
+        .nav-1828-211 li {
+            list-style: none;
+            padding-bottom: 18px;
+            display: inline-block;
+        }
+        
+        .nav-1828-2 li,
+        .nav-1828-3 li,
+        .nav-1828-4 li {
+            list-style: none;
+            padding-left: 20px;
+            display: inline-block;
+        }
+        
+        .nav-1828-5 li {
+            list-style: none;
+            padding-left: 10px;
+            display: inline-block;
+        }
+        
+        .nav-1828-4 li {
+            padding-left: 30px;
+        }
+        
+        .div-8282-82 {
+            width: 350px;
+            height: 370px;
+            position: relative;
+            background-color: blue;
+        }
+        
+        .div-8282-82-282 {
+            width: 290px;
+            height: 390px;
+            position: relative;
+            background-color: blue;
+        }
+        
+        .par-828-89 {
+            font-size: 25px;
+            color: black;
+            position: relative;
+            font-weight: normal;
+            line-height: 1.3;
+            text-align: center;
+            font-family: "Cabri ", sans-serif;
+        }
+        
+        .div-8282-82-12 {
+            width: 570px;
+            height: 465px;
+            position: relative;
+            background-color: red;
+        }
+        
+        .div-8282-82-12-13 {
+            width: 260px;
+            height: 245px;
+            position: relative;
+            background-color: red;
+        }
+        
+        .div-8282-82-11 {
+            width: 350px;
+            height: 392px;
+            position: relative;
+            background-color: red;
+        }
+        
+        .nav-10 {
+            position: absolute;
+            top: 2px;
+            left: 230px;
+        }
+        
+        .nav-10 li {
+            list-style: none;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+        
+        h1,
+        h2,
+        h3 {
+            font-size: 45px;
+            color: rgb(255, 255, 255);
+            position: absolute;
+            top: -20px;
+            left: 5px;
+            font-weight: bolder;
+            font-family: "Cabri ", sans-serif;
+        }
+        
+        h2 {
+            top: 25px;
+        }
+        
+        h3 {
+            top: 70px;
+        }
+        
+        .div-0229-12 {
+            background-color: transparent;
+            top: 300px;
+            left: 120px;
+            width: 550px;
+            height: 250px;
+            position: absolute;
+        }
+        
+        .div-2882-91 {
+            width: 245px;
+            height: 52px;
+            background-color: orange;
+            position: absolute;
+            top: 175px;
+            left: 8px;
+            color: rgb(255, 255, 255);
+            font-size: 16px;
+            font-family: "Cabri ", sans-serif;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+        
+        .div-txt-cnt-132 {
+            width: 600px;
+            height: 320px;
+            background-color: transparent;
+            position: relative;
+        }
+        
+        .par-7272-122 {
+            font-size: 25px;
+            position: relative;
+            text-align: center;
+            top: 10px;
+            font-family: "Cabri ", sans-serif;
+            color: white;
+        }
+        
+        .div-928-92 {
+            width: 48px;
+            height: 48px;
+            background-color: transparent;
+            position: absolute;
+            top: 78%;
+            border-radius: 100px;
+            left: 50%;
+            border: 2px solid white;
+            transform: translate(-50%, -50%);
+        }
+        
+        .left-click {
+            width: 45px;
+            height: 45px;
+            top: 400px;
+            left: 5px;
+            position: absolute;
+            border-radius: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: transparent;
+        }
+        
+        .left-img-372,
+        .right-img-372 {
+            zoom: 28%;
+            position: relative;
+        }
+        
+        .div-0191-1 {
+            width: 20px;
+            height: 20px;
+            position: relative;
+            border-radius: 50px;
+            border: 1px solid white;
+            background-color: transparent;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .div-991-19 {
+            width: 12px;
+            height: 12px;
+            position: relative;
+            border-radius: 50px;
+            background-color: white;
+        }
+        
+        .nav-726-11 {
+            position: absolute;
+            bottom: 0px;
+            left: 46%;
+        }
+        
+        .nav-726-11-181 {
+            position: absolute;
+            top: -5px;
+            left: -25px;
+        }
+        
+        .nav-726-11 li,
+        .nav-726-11-181 li {
+            list-style: none;
+            padding-left: 1px;
+            display: inline-block;
+        }
+        
+        .right-click {
+            width: 45px;
+            height: 45px;
+            top: 400px;
+            right: 5px;
+            position: absolute;
+            border-radius: 100px;
+            background-color: transparent;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .img-828-181 {
+            zoom: 15%;
+            position: relative;
+            top: 17px;
+            left: 6.5px;
+        }
+        
+        .sp-272-11 {
+            position: relative;
+            left: -1px;
+        }
+        
+        @media (max-width: 1150px) {
+            .Main-display-12 .div-012 {
+                top: 140px;
+            }
+            .nav-726-11 {
+                bottom: 40px;
+            }
+        }
+        
+        .div-82292-92 {
+            position: absolute;
+            bottom: -18px;
+            width: 100px;
+            height: 40px;
+            left: 50%;
+            background-color: transparent;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+    <main class="Main-display-12">
+        <div class="div-010">
+            <nav class="nav-10">
+                <ul>
+                    <li>
+                        <div class="div-12" data-panel="about" style="width: 92px;">
+                            <p><span class="sp-272-11">About</span> <img src="../Reps/icons8-down-arrow-1sssssssxxx00.png" class="img-828-181"></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="div-12" data-panel="printing" style="width: 170px;">
+                            <p><span class="sp-272-11">Printing Services</span> <img src="../Reps/icons8-down-arrow-1sssssssxxx00.png" class="img-828-181"></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="div-12" style="   width: 130px;">Our Portfolio</div>
+                    </li>
+                    <li>
+                        <div class="div-12" style="   width: 120px;">Our Clients</div>
+                    </li>
+                    <li>
+                        <div class="div-12" style="   width: 80px;">FAQ</div>
+                    </li>
+                    <li>
+                        <div class="div-12" style="   width: 120px;">Contacts us</div>
+                    </li>
+                    <li>
+                        <div class="div-12" style="   width: 75px;">Blog</div>
+                    </li>
+                    <li>
+                        <div class="div-12" style="border-radius: 3px; width: 150px; background-color: orange;">Quick Quote</div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="div-012">
+            <div class="left-click"><img src="../Reps/3q333e3343ghghfhfdheheherrr5365634331.png" class="left-img-372"></div>
+            <div class="right-click"><img src="../Reps/Untitled.png" class="right-img-372"></div>
+            <div class="div-0229-12">
+                <h1>Discover a better way</h1>
+                <h2>to print with</h2>
+                <h3>Solve hint</h3>
+                <div class="div-2882-91">Learn more</div>
+            </div>
+            <nav class="nav-726-11">
+                <ul>
+                    <li>
+                        <div class="div-0191-1">
+                            <div class="div-991-19"></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="div-0191-1">
+                            <div class="div-991-19" style="display: none;"></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="div-0191-1">
+                            <div class="div-991-19" style="display: none;"></div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="div-013">
+            <div class="div-txt-cnt-132">
+                <p class="par-7272-122">We are passioate about helping businesses</p>
+                <p class="par-7272-122" style="top:-9px;">succeed. Our wide range of printing services and</p>
+                <p class="par-7272-122" style="top:-29px;">commitment to customers satisfication make us the</p>
+                <p class="par-7272-122" style="top:-49px;">ideal partner for all your printing needs. Unleash the</p>
+                <p class="par-7272-122" style="top:-69px;">possiblities #ABetterWayToPrint</p>
+                <div class="div-928-92"></div>
+            </div>
+        </div>
+        <div class="div-014"></div>
+        <div class="div-015">
+            <div class="div-015-822"></div>
+            <nav class="nav-1828-1">
+                <ul>
+                    <li>
+                        <div class="div-8282-82"></div>
+                    </li>
+                    <li>
+                        <div class="div-8282-82"></div>
+                    </li>
+                    <li>
+                        <div class="div-8282-82"></div>
+                    </li>
+                    <li>
+                        <div class="div-8282-82"></div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="div-016">
+            <nav class="nav-1828-2">
+                <ul>
+                    <li>
+                        <div class="div-8282-82-12"></div>
+                    </li>
+                    <li>
+                        <div class="div-8282-82-12"></div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="div-017">
+            <nav class="nav-1828-3">
+                <ul>
+                    <li>
+                        <div class="div-8282-82-12-13"></div>
+                    </li>
+                    <li>
+                        <div class="div-8282-82-12-13"></div>
+                    </li>
+                    <li>
+                        <div class="div-8282-82-12-13"></div>
+                    </li>
+                    <li>
+                        <div class="div-8282-82-12-13"></div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="div-018">
+            <nav class="nav-1828-4">
+                <ul>
+                    <li>
+                        <div class="div-8282-82-11"></div>
+                    </li>
+                    <li>
+                        <div class="div-8282-82-11"></div>
+                    </li>
+                    <li>
+                        <div class="div-8282-82-11"></div>
+                    </li>
+                    <li>
+                        <div class="div-8282-82-11"></div>
+                    </li>
+                </ul>
+            </nav>
+            <nav class="nav-1828-5">
+                <ul>
+                    <li>
+                        <div class="div-8282-029" style=" width: 7px; height: 7px;"></div>
+                    </li>
+                    <li>
+                        <div class="div-8282-029" style=" width: 7px; height: 7px;"></div>
+                    </li>
+                    <li>
+                        <div class="div-8282-029" style=" width: 7px; height: 7px;"></div>
+                    </li>
+                    <li>
+                        <div class="div-8282-029" style=" width: 7px; height: 7px;"></div>
+                    </li>
+                    <li>
+                        <div class="div-8282-029"></div>
+                    </li>
+                    <li>
+                        <div class="div-8282-029" style=" width: 7px; height: 7px;"></div>
+                    </li>
+                    <li>
+                        <div class="div-8282-029" style=" width: 7px; height: 7px;"></div>
+                    </li>
+                    <li>
+                        <div class="div-8282-029" style=" width: 7px; height: 7px;"></div>
+                    </li>
+                    <li>
+                        <div class="div-8282-029" style=" width: 7px; height: 7px;"></div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="div-019">
+            <div class="div-09292-818"></div>
+        </div>
+        <div class="div-020">
+            <div class="div-09292-818"></div>
+        </div>
+        <div class="div-021"></div>
+        <div class="div-2828-02">
+            <div class="div-2828-02-122">
+                <div class="div-232-828"></div>
+                <p class="par-829-22">About us</p>
+                <p class="par-829-22-3">One of the foremost printing and corporate</p>
+                <p class="par-829-22-3" style="top:233px;">Support service providers in Sub-Sahara Africa.</p>
+                <p class="par-829-22-3" style="top:254px;">A one-stop for everything within the space</p>
+                <p class="par-829-22-3" style="top:275px;">of printing</p>
+            </div>
+            <div class="div-2828-02-122-3">
+                <nav class="nav-8720-82">
+                    <ul>
+                        <li>
+                            <div class="div-2727-227">
+                                <p class="par-828-92">Who we are</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="div-2727-227">
+                                <p class="par-828-92">Our history</p>
+
+                            </div>
+                        </li>
+                        <li>
+                            <div class="div-2727-227">
+                                <p class="par-828-92">Missions / Goals</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="div-2727-227">
+                                <p class="par-828-92">Our Values</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="div-2727-227">
+                                <p class="par-828-92">Our People</p>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="div-2828-02-14">
+            <div class="div-prt-1">
+                <div class="div-232-828-92"></div>
+                <p class="par-829-22" style="  top: 240px;  left: 25px;">Our Services</p>
+                <p class="par-829-22-3" style="  top: 300px;  left: 25px;">We deploy the latest technology to provide QUALITY, TIMELY</p>
+                <p class="par-829-22-3" style="  top: 321px;  left: 25px;">and AWESOME images which excite and create lasting</p>
+                <p class="par-829-22-3" style="  top: 342px;  left: 25px;">impressions</p>
+            </div>
+            <div class="div-prt-2"></div>
+            <div class="div-prt-3"></div>
+        </div>
+    </main>
+    <script>
+        const triggers = document.querySelectorAll('.div-12');
+
+        const panels = {
+            about: document.querySelector('.div-2828-02'), // green panel
+            printing: document.querySelector('.div-2828-02-14') // white panel
+        };
+
+        function hideAll() {
+            Object.values(panels).forEach(p => p.style.display = 'none');
+        }
+
+        // Clicking a trigger shows its panel (and hides the other one)
+        triggers.forEach(function(trigger) {
+            trigger.addEventListener('click', function(e) {
+                e.stopPropagation();
+                hideAll();
+                panels[trigger.dataset.panel].style.display = 'block';
+            });
+        });
+
+        // Clicking anywhere else hides everything
+        document.body.addEventListener('click', function(e) {
+            const clickedInsidePanel = Object.values(panels).some(p => p.contains(e.target));
+            if (!clickedInsidePanel) hideAll();
+        });
+    </script>
+    <main class="Phone-display-12">
+        <div class="div-0101">
+            <div class="div-9393-88"><img src="../Reps/icons8-menu-100.png" class="img-882-29"></div>
+        </div>
+        <div class="div-9292-299">
+            <div class="div-012" style=" top: 80px;   height:520px;">
+                <div class="left-click" style="top: 235px; border-radius: 100px;background-color:  transparent;  width: 37px; height: 37px;"><img src="../Reps/3q333e3343ghghfhfdheheherrr5365634331.png" class="left-img-372" style="  zoom: 21%; left: -10px;"></div>
+                <div class="right-click" style="top: 235px; border-radius: 100px;background-color:  transparent;  width: 37px; height: 37px;"><img src="../Reps/Untitled.png" class="right-img-372" style="  zoom: 21%; "></div>
+                <div class="div-0229-12" style="   background-color: transparent; top: 200px;  left: 45px;  width: 240px; height: 140px; ">
+                    <h1 style=" top: -5px; font-weight: bold; font-size: 22px;">Discover a better way</h1>
+                    <h2 style=" top: 19px; font-weight: bold; font-size: 22px;">to print with</h2>
+                    <h3 style=" top:44px; font-weight: bold; font-size: 22px;">Solve hint</h3>
+                    <div class="div-2882-91" style=" font-size: 11.5px; left: 6px; top: 103px; width: 145px;  height: 33px;">Learn more</div>
+                </div>
+                <div class="div-82292-92">
+                    <nav class="nav-726-11-181">
+                        <ul>
+                            <li>
+                                <div class="div-0191-1" style="    width: 17px; height: 17px;">
+                                    <div class="div-991-19" style="width: 11px; height: 11px;"></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="div-0191-1" style="    width: 17px; height: 17px;">
+                                    <div class="div-991-19" style="  width: 11px; height: 11px;"></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="div-0191-1" style="    width: 17px; height: 17px;">
+                                    <div class="div-991-19" style="  width: 11px; height: 11px;"></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="div-013" style=" top: 600px;   height: 40px;">
+                <p class="par-828-882"><img src="../Reps/icons8-trophy-100.png" class="img-282-911"> <span class="sp-929-228">All Current company customers</span></p>
+            </div>
+            <div class="div-014" style="   background-color: rgb(56, 37, 1); display: flex; justify-content: center; align-items: center; top: 640px; height: 490px;">
+                <div class="div-txt-cnt-132" style="background-color: transparent;  width:85%; height:400px;">
+                    <p class="par-7272-122" style=" font-size: 22px; word-break: break-word;  ; line-height: 1.35;  overflow-wrap: anywhere; max-width: 100%;">We are passioate about helping businesses succeed. Our wide range of printing services and commitment to customers satisfication make us the ideal partner for all your printing needs. Unleash the possiblities #ABetterWayToPrint</p>
+                    <div class="div-928-92" style="  top: 100%; width: 35px; height: 35px;"></div>
+                </div>
+            </div>
+            <div class="div-015" style="   background-color: red; display: flex; justify-content: center; align-items: center; top: 1130px; height: 2100px;">
+                <nav class="nav-1828-211">
+                    <ul>
+                        <li>
+                            <div class="div-8282-82-282">
+                                <p class="par-828-89">Premium Printing Services</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="div-8282-82-282"></div>
+                        </li>
+                        <li>
+                            <div class="div-8282-82-282"></div>
+                        </li>
+                        <li>
+                            <div class="div-8282-82-282"></div>
+                        </li>
+                        <li>
+                            <div class="div-8282-82-282"></div>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+    </main>
+    <script>
+        const isAndroid = /Android/i.test(navigator.userAgent);
+        const isWindows = /Windows/i.test(navigator.userAgent);
+        const screenWidth = window.matchMedia("(max-width: 900)");
+        const isIphone = /iPhone/i.test(navigator.userAgent);
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        const isSafari = isIOS && /^((?!chrome).)*safari/i.test(navigator.userAgent);
+        const desktopCont = document.querySelector('.Main-display-12');
+        const mobileCont = document.querySelector('.Phone-display-12');
+
+
+        function toggleSignupView() {
+            // Force mobile for Android/iPhone/Safari/iOS, otherwise use width
+            const isMobileDevice = isAndroid || isIphone || isIOS || isSafari;
+
+            if (isMobileDevice || window.innerWidth <= 800) {
+                desktopCont.style.display = 'none';
+                mobileCont.style.display = 'block';
+            } else {
+                desktopCont.style.display = 'block';
+                mobileCont.style.display = 'none';
+            }
+        }
+
+        // Run on load
+        toggleSignupView();
+
+        // Run on resize
+        window.addEventListener('resize', toggleSignupView);
+    </script>
+</body>
+
+</html>

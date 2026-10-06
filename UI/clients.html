@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solve Hint - Printing limited Platform</title>
+</head>
+
+<body>
+    <style>
+        .Main-display-12,
+        .Phone-display-12 {
+            display: none;
+        }
+        /* Above 800px: show desktop version */
+        
+        @media only screen and (max-width: 980px) {
+            @supports (-webkit-touch-callout: none) {
+                /*---- only matches for IOS safari---*/
+                .Phone-display-12 {
+                    display: block;
+                    aspect-ratio: 9/16;
+                    /*---- Phone portrait ---*/
+                }
+                .Main-display-12 {
+                    display: none;
+                }
+            }
+        }
+        
+        @media (min-width: 801px) {
+            .Main-display-12 {
+                display: block;
+            }
+        }
+        /* 800px and below: show mobile version */
+        
+        @media (max-width: 800px) {
+            .Phone-display-12 {
+                display: block;
+            }
+        }
+        
+        .div-010 {
+            width: 100%;
+            height: 100px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: transparent;
+            border-bottom: none;
+        }
+        
+        .nav-10 {
+            position: absolute;
+            top: 2px;
+            left: 230px;
+        }
+        
+        .nav-10 li {
+            list-style: none;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+        
+        .div-12:hover {
+            cursor: pointer;
+            color: orange;
+        }
+        
+        .div-12 {
+            width: 170px;
+            height: 50px;
+            background-color: transparent;
+            position: relative;
+            font-family: Cambria, "Times New Roman", serif;
+            font-size: 17px;
+            color: black;
+            font-weight: 540;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .sp-272-11 {
+            position: relative;
+            left: -1px;
+        }
+        
+        .img-828-181 {
+            zoom: 15%;
+            position: relative;
+            top: 17px;
+            left: 6.5px;
+        }
+        
+        .div-012,
+        .div-013,
+        .div-014,
+        .div-015,
+        .div-016,
+        .div-017,
+        .div-018,
+        .div-019,
+        .div-020,
+        .div-021 {
+            width: 100%;
+            height: 90px;
+            position: absolute;
+            top: 79px;
+            left: 0;
+            display: block;
+            background-color: red;
+            border-bottom: 1px solid black;
+        }
+        
+        .div-012 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .div-013 {
+            width: 100%;
+            height: 500px;
+            position: absolute;
+            top: 170px;
+            left: 0;
+            display: block;
+            background-color: blue;
+            border-bottom: 1px solid black;
+        }
+        
+        .par-8272-82 {
+            position: relative;
+            font-size: 30px;
+            text-align: center;
+            font-family: "Cabri ", sans-serif;
+            color: white;
+            font-weight: 548;
+        }
+    </style>
+    <main class="Main-display-12">
+        <div class="div-010">
+            <nav class="nav-10">
+                <ul>
+                    <li>
+                        <div class="div-12" data-panel="about" style="width: 92px;">
+                            <p><span class="sp-272-11">About</span> <img src="../Reps/icons8-down-arrow-1sssssssxxx00.png" class="img-828-181"></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="div-12" data-panel="printing" style="width: 170px;">
+                            <p><span class="sp-272-11">Printing Services</span> <img src="../Reps/icons8-down-arrow-1sssssssxxx00.png" class="img-828-181"></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="div-12" style="   width: 130px;">Our Portfolio</div>
+                    </li>
+                    <li>
+                        <div class="div-12" style="   width: 120px;">Our Clients</div>
+                    </li>
+                    <li>
+                        <div class="div-12" style="   width: 80px;">FAQ</div>
+                    </li>
+                    <li>
+                        <div class="div-12" style="   width: 120px;">Contacts us</div>
+                    </li>
+                    <li>
+                        <div class="div-12" style="   width: 75px;">Blog</div>
+                    </li>
+                    <li>
+                        <div class="div-12" style="border-radius: 3px; width: 150px; background-color: orange;">Quick Quote</div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="div-012">
+            <p class="par-8272-82">Faq</p>
+        </div>
+        <div class="div-013">
+
+        </div>
+    </main>
+    <main class="Phone-display-12"></main>
+    <script>
+        const isAndroid = /Android/i.test(navigator.userAgent);
+        const isWindows = /Windows/i.test(navigator.userAgent);
+        const screenWidth = window.matchMedia("(max-width: 900)");
+        const isIphone = /iPhone/i.test(navigator.userAgent);
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        const isSafari = isIOS && /^((?!chrome).)*safari/i.test(navigator.userAgent);
+        const desktopCont = document.querySelector('.Main-display-12');
+        const mobileCont = document.querySelector('.Phone-display-12');
+
+
+        function toggleSignupView() {
+            // Force mobile for Android/iPhone/Safari/iOS, otherwise use width
+            const isMobileDevice = isAndroid || isIphone || isIOS || isSafari;
+
+            if (isMobileDevice || window.innerWidth <= 800) {
+                desktopCont.style.display = 'none';
+                mobileCont.style.display = 'block';
+            } else {
+                desktopCont.style.display = 'block';
+                mobileCont.style.display = 'none';
+            }
+        }
+
+        // Run on load
+        toggleSignupView();
+
+        // Run on resize
+        window.addEventListener('resize', toggleSignupView);
+    </script>
+</body>
+
+</html>
