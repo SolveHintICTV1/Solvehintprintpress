@@ -106,19 +106,20 @@
         .div-020,
         .div-021 {
             width: 100%;
-            height: 90px;
+            height: 130px;
             position: absolute;
             top: 79px;
             left: 0;
             display: block;
             background-color: red;
-            border-bottom: 1px solid black;
         }
         
         .div-012 {
             display: flex;
             justify-content: center;
             align-items: center;
+            background-image: url('../Media/man-deeply-focused-reading-quiet-library-setting-concept-quiet-library-studious-man-focused-reading_918839-32676.avif');
+            background-size: cover;
         }
         
         .div-013 {
@@ -138,7 +139,76 @@
             text-align: center;
             font-family: "Cabri ", sans-serif;
             color: white;
-            font-weight: normal;
+            font-weight: bold;
+        }
+        
+        .div-0101 {
+            width: 100%;
+            height: 80px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 20;
+            background-color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .div-9393-88 {
+            width: 45px;
+            height: 45px;
+            background-color: transparent;
+            position: absolute;
+            top: 50%;
+            right: -15px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: translate(-50%, -50%);
+        }
+        
+        .img-882-29 {
+            zoom: 40%;
+            position: relative;
+        }
+        
+        .div-9393-88:hover,
+        .div-2882-91:hover,
+        .left-click:hover,
+        .right-click:hover,
+        .div-928-92:hover,
+        .div-12-2282:hover,
+        .menu-2929-282:hover,
+        .menu-2929-282-1:hover,
+        .menu-2929-282-2:hover,
+        .menu-2929-282-3:hover,
+        .menu-2929-282-4:hover,
+        .menu-2929-282-5:hover,
+        .menu-2929-282-6:hover,
+        .menu-2929-282-7:hover {
+            background-color: rgba(56, 56, 56, 0.4);
+            cursor: pointer;
+            color: white;
+        }
+        
+        .div-9292-299 {
+            width: 100%;
+            height: 580px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: red;
+        }
+        
+        .menu-div {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: none;
+            background-color: white;
+            z-index: 100;
+            overflow: auto;
         }
     </style>
     <main class="Main-display-12">
@@ -179,11 +249,32 @@
         <div class="div-012">
             <p class="par-8272-82">About Us</p>
         </div>
-        <div class="div-013">
-
-        </div>
+        <div class="div-0139"> </div>
     </main>
-    <main class="Phone-display-12"></main>
+    <main class="Phone-display-12">
+        <div class="div-0101">
+            <div class="div-9393-88"><img src="../Reps/Untitlewwwhwhwjjd.png" class="img-882-29"></div>
+        </div>
+        <div class="div-9292-299">
+            <div class="div-012" style=" top: 80px;   height: 90px;">
+                <p class="par-8272-82" style="font-size: 25px;">About Us</p>
+            </div>
+            <div class="menu-div"></div>
+    </main>
+    <script>
+        // for the menu active
+        document.addEventListener('DOMContentLoaded', () => {
+            const menu = document.querySelector('.menu-div');
+            if (!menu) return; // guard: menu not on this page
+
+            // Delegated listener: still works if .div-0101 is added to the DOM later
+            document.addEventListener('click', (e) => {
+                if (e.target.closest('.div-9393-88')) {
+                    menu.style.display = 'block';
+                }
+            });
+        });
+    </script>
     <script>
         const isAndroid = /Android/i.test(navigator.userAgent);
         const isWindows = /Windows/i.test(navigator.userAgent);
